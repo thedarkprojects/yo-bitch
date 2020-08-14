@@ -106,3 +106,10 @@ type `A` and press enter to download all the episode you will be propmt to enter
 
 Enter `exit` at anytime in the program prompt to end the program
 
+# Disclamer
+
+This project is licence with `The Unlicenced` whatever you use this script for is not a concern of the author or any contributor to the project or thedarkproject organization. 
+
+The user is liable for any charges that might arise downloading pirated copy of series.
+
+This script is not guaranteed to work as you expected, Issues raised in this repository will not be on the author or contributors priority. 

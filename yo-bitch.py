@@ -8,7 +8,7 @@ from tqdm import tqdm
 from multiprocessing.dummy import Pool as ThreadPool
 import itertools
 
-global_download_path = "C:/Users/azeez/Videos/SIMPSONS/S28" #None
+global_download_path = None
 
 def cls():
     os.system('cls' if os.name=='nt' else 'clear')
@@ -25,7 +25,7 @@ def download_episode(episode):
     global global_download_path
     if global_download_path is None:
         global_download_path = accept_cli_input("Enter the folder to download the video into ", False)
-        if not os.path.isdir("/home/el"):
+        if not os.path.isdir(global_download_path):
             print("The folder '" + global_download_path + "' does not exists")
             global_download_path = None
             download_episode(episode)
@@ -60,7 +60,15 @@ def download_episode(episode):
         traceback.print_exc()
     
 def download_episodes(episodes_list):
-    pool = ThreadPool(5)
+    global global_download_path
+    if global_download_path is None:
+        global_download_path = accept_cli_input("Enter the folder to download the video into ", False)
+        if not os.path.isdir(global_download_path):
+            print("The folder '" + global_download_path + "' does not exists")
+            global_download_path = None
+            download_episode(episode)
+            return None
+    pool = ThreadPool(3)
     results = pool.starmap(download_episode, zip(episodes_list))
     pool.close()
     pool.join()
@@ -115,7 +123,7 @@ def scrap_season_page(scrap_url, back_link = None, super_bl = None):
         scrap_season_page(prev, back_link, super_b)
     elif (entry == "b" or entry == "back"):
         scrap_series_page(back_link, super_bl)
-    elif (entry == "a" or entry == "yes"):
+    elif (entry == "a" or entry == "yes" or entry == "all"):
         episodes_list.pop(0)
         download_episodes(episodes_list)
     else:
