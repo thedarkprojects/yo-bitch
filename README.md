@@ -2,6 +2,8 @@
 # yo-bitch
 Search and Download series from https://www.mobiletvshows.net/ from cli.
 
+[![Watch the video](https://repository-images.githubusercontent.com/287421797/01cf0e80-ddfe-11ea-98b8-afd5659259ae)](https://github.com/thedarkprojects/yo-bitch/blob/main/demo.mp4)
+
 ```bash
 usage: yo-bitch.py [-h] [--find [FIND]] [--series [SERIES]] [--season [SEASON]]
 
