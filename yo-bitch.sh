@@ -1,0 +1,1 @@
+python ./yo-bitch.py $*
