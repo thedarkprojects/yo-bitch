@@ -224,15 +224,14 @@ def enter_shell():
     print("Search and download like\nyo-bitch find simpson\nyo-bitch -h to view the possible commands")
 
 def main():
-    parser = argparse.ArgumentParser(description='Search and Download series from https://www.mobiletvshows.net/ from cli. ')
+    parser = argparse.ArgumentParser(description='Search and Download series from https://www.mobiletvshows.net/ from cli. \n' + 
+                                                  'example: yo-bitch --find simpson')
     parser.add_argument('--find', type=str, nargs='?',
                     help='Find a series on mobiletvshows')
     parser.add_argument('--series', type=str, nargs='?',
                     help='Visit a series page scrap the list of seasons in it')
     parser.add_argument('--season', type=str, nargs='?',
                     help='Visit a series season page scrap the list of episodes in it')
-    parser.add_argument('--visit', type=str, nargs='?',
-                    help='Visit a page from mobiletvshows and scrap the series and episodes in it')
                     
     args = parser.parse_args()
     if args.find:
