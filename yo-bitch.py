@@ -48,10 +48,10 @@ def download_episode(episode):
             link = "https://www.mobiletvshows.net/" + link
         page = session.get(link)
         soup = BeautifulSoup(page.content, 'html.parser')
-        link = soup.find('a', text="Download Link 2")
+        link = soup.find('input', {"name": "filelink"}).get('value')
         
-        name = os.path.basename(link['href'])
-        response = requests.get(link['href'], stream=True)
+        name = os.path.basename(link)
+        response = requests.get(link, stream=True)
         with open(global_download_path + "/" + name, "wb") as handle:
             for data in tqdm(response.iter_content(chunk_size=3072), desc="Downloading '" + name + "' "):
                 handle.write(data)
